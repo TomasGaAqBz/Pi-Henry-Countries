@@ -13,7 +13,7 @@ server.listen(PORT, async () => { //* config para levantar el server en el puert
   try {
     await conn.sync({ force: true }) //* sincro de Sequilize con DB
     
-    countrySync();
+    await countrySync();
 
     console.log("Sincro Perfecta");
     // await Funcion para sincronizar DB
