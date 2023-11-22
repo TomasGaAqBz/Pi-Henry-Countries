@@ -24,17 +24,18 @@ module.exports = (sequelize) => {
     },
     continent: {
       type: DataTypes.STRING,
-      allowNull:false,
+      allowNull:true,
     },
     coatOfArms:{
       type: DataTypes.STRING,
     },
     capital: {
       type: DataTypes.STRING,
-      allowNull: false      
+      allowNull: true      
     },
     subregion: {
       type: DataTypes.STRING,
+      allowNull:true
      
     },
     area: {type: DataTypes.FLOAT,

@@ -12,7 +12,7 @@ const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}
   native: false, 
 });
 const basename = path.basename(__filename);
-sequelize.authenticate().then(()=>{console.log("FOFO FUnciona en la DB");}).catch((error)=>{console.log("tenemos un error: ", error);})
+sequelize.authenticate().then(()=>{console.log("DataBase Conectada Perfectamente");}).catch((error)=>{console.log("tenemos un error: ", error);})
 
 const modelDefiners = [];
 
