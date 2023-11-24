@@ -31,8 +31,8 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 const { Country , Activity} = sequelize.models;
 
-// Aca vendrian las relaciones
-//! Relacion Muchos a muchos a traves de Activity_Country
+
+// Relacion Muchos a muchos a traves de Activity_Country
 Country.belongsToMany(Activity, { through: "activity_country" });
 Activity.belongsToMany(Country, { through: "activity_country" });
 

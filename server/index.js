@@ -1,27 +1,26 @@
 const axios = require("axios");
 const server = require("./src/server");
 const { conn } = require('./src/db.js');
-const countrySync = require('./src/utils/syncData.js')
+const countrySync = require('./src/utils/syncData.js');
 
-
+// Variable para controlar el puerto
 const PORT = 3001;
 
-
-server.listen(PORT, async () => { //* config para levantar el server en el puerto 3001
+server.listen(PORT, async () => {
+  // Configuración para levantar el servidor en el puerto 3001
   console.log(`Server levantado en el puerto ${PORT}`);
 
   try {
-    await conn.sync({ force: true }) //* sincro de Sequilize con DB
-    
+    // Sincroniza Sequelize con la base de datos
+    await conn.sync({ force: true });
+
+    // Sincroniza los datos de países desde una API externa a la base de datos local
     await countrySync();
 
-    console.log("Sincro Perfecta");
-    // await Funcion para sincronizar DB
-
+    // Mensaje de éxito si la sincronización fue exitosa
+    console.log("Successful synchronization");
   } catch (error) {
-    
-    console.log("tenemos un problema",error )
+    // Manejo de errores en caso de problemas durante la sincronización
+    console.log("We have a problem:", error);
   }
-  
-
-})
+});

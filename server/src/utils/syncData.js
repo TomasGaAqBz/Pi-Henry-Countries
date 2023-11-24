@@ -1,21 +1,23 @@
 const axios = require('axios')
 const {Country} = require('../db')
 
+//Sincroniza la base de datos local con los datos de países provenientes de una API externa.
+const countrySync = async () => {
+    const URL_API = "http://localhost:5000/countries";
 
-const countrySync = async () =>{
-    const URL_API =  "http://localhost:5000/countries";
     try {
-                //? se consulta si hay paises creados , sino se procede a crearlos
-        const countryExist = await Country.findAll()
-        if(countryExist.length === 0){
-            const reponse = await axios.get(URL_API)
-            const countries = reponse.data
+        // Se consulta si hay países creados en la base de datos local
+        const countriesExist = await Country.findAll();
 
+        // Si no hay países creados, se procede a obtener y crearlos desde la API externa
+        if (countriesExist.length === 0) {
+            // Se obtienen los datos de países desde la API externa
+            const response = await axios.get(URL_API);
+            const countries = response.data;
 
-                //? map de propiedades y se crea un array para luego hacer un bulkcreate
-            const loadCountriesData = countries.map((country) =>{
-                console.log("entrando en el map")
-                return{
+            // Se mapean las propiedades y se crea un array para luego realizar un bulk create en la base de datos
+            const loadCountriesData = countries.map((country) => {
+                return {
                     id: country.cca3,
                     name: country.name.common,
                     flagImage: country.flags.png,
@@ -25,21 +27,22 @@ const countrySync = async () =>{
                     subregion: country.subregion,
                     area: country.area,
                     population: country.population,
-                }
-                
-            })
-            const createDbCountry = await Country.bulkCreate(loadCountriesData);
-            console.log("DataBase Creada");
-            return createDbCountry
+                };
+            });
+
+            // Se crea o actualiza la base de datos con los datos de países mapeados
+            const createOrUpdateDbCountries = await Country.bulkCreate(loadCountriesData);
+            console.log("Database created or updated");
+            return createOrUpdateDbCountries;
         }
-        return
+
+        // Si ya hay países creados, no es necesario realizar ninguna acción
+        return;
     } catch (error) {
-        console.log("Error al obtener Base de datos: ", error)
-        throw error
+        // Si hay algún problema al obtener o sincronizar los datos de países, se lanza un error
+        console.error("Error getting or syncing database:", error);
+        throw error;
     }
-
-
-
 };
 
 module.exports = countrySync;

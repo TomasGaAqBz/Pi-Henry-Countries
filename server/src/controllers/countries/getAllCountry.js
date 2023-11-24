@@ -4,19 +4,17 @@ const {Country,Activity} = require('../../db')
 
 
 //  GET | /countries Obtiene un arreglo de objetos, donde cada objeto es un país con toda su información.
-const getAllCountry = async () =>{
+const getAllCountry = async () => {
     try {
-        const countries = await Country.findAll()
-        console.log("se pudo obtener los datos de todos los paises")
-        return countries
+        // Obtiene todos los países de la base de datos
+        const countries = await Country.findAll();
+        // Devuelve el arreglo de objetos que representa todos los países
+        return countries;
     } catch (error) {
-        throw new Error('No se pudo obtener los datos de todos los paises')
+        // Si hay un error durante la obtención de los datos, lanza un error con un mensaje específico
+        throw new Error('Unable to retrieve data for all countries');
     }
-
-
-
-}
-
+};
 
 
 module.exports = getAllCountry;
