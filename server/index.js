@@ -1,7 +1,7 @@
 const axios = require("axios");
 const server = require("./src/server");
 const { conn } = require('./src/db.js');
-const countrySync = require('./src/utils/syncData')
+const countrySync = require('./src/utils/syncData.js')
 
 
 const PORT = 3001;
@@ -25,4 +25,3 @@ server.listen(PORT, async () => { //* config para levantar el server en el puert
   
 
 })
-
