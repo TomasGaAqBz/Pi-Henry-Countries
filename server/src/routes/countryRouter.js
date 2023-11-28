@@ -1,5 +1,6 @@
 
 const countryRouter = require('express').Router();
+const { response } = require('express');
 const getAllCountry = require('../controllers/countries/getAllCountry.js')
 const getCountryById = require('../controllers/countries/getCountryById.js')
 const getCountryByName = require('../controllers/countries/getCountryByName.js')
@@ -10,12 +11,13 @@ const getCountryByName = require('../controllers/countries/getCountryByName.js')
 
 // Maneja la solicitud GET a la ruta '/countries/' para obtener todos los países
 countryRouter.get('/', async (req, res) => {
+    const {name} = req.query
     try {
-        // Obtiene la lista de todos los países
-        const countries = await getAllCountry();
+        const reponse = name ? await getCountryByName(name) : await getAllCountry();
+
 
         // Responde con un código de estado 200 y la lista de países en formato JSON
-        res.status(200).json(countries);
+        res.status(200).json(response);
 
     } catch (error) {
         // Si hay un error, responde con un código de estado 400 y un mensaje de error en formato JSON

@@ -20,7 +20,13 @@ const getCountryById = async (countryId) => {
                 id: {
                     [Sequelize.Op.iLike]: countryId
                 }
-            }
+            },include:{
+                    model: Activity,
+                    attributes: ["name"],
+                    through: {
+                        attributes:[]
+                    }
+                }
         });
 
         // Si no se encuentra ningún país con el ID proporcionado, lanza un error

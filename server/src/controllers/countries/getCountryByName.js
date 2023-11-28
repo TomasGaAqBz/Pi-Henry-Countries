@@ -11,7 +11,13 @@ const getCountryByName = async (countryName) => {
                 name: {
                     [Op.iLike]: `%${countryName}%`,
                 },
-            },
+            },include:{
+                    model: Activity,
+                    attributes: ["name"],
+                    through: {
+                        attributes:[]
+                    }
+                }
         });
 
         // Devuelve el arreglo de objetos que representa los países encontrados

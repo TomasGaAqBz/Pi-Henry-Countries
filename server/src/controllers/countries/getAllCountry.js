@@ -7,7 +7,15 @@ const {Country,Activity} = require('../../db')
 const getAllCountry = async () => {
     try {
         // Obtiene todos los países de la base de datos
-        const countries = await Country.findAll();
+        const countries = await Country.findAll({
+            include:{
+                model: Activity,
+                attributes: ["name"],
+                through: {
+                    attributes:[]
+                }
+            }
+    });
         // Devuelve el arreglo de objetos que representa todos los países
         return countries;
     } catch (error) {
