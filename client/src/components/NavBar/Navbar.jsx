@@ -1,10 +1,20 @@
-import "./navbar.module.css"
+
+
+//? componenet
+import SearchBar from "../SearchBar/SearchBar"
+
+
+import NavbarStyle from "./navbar.module.css"
 
 const Navbar = () =>{
     
-    <nav>
+    return(
+    <nav className={NavbarStyle.container}>
         <div>
             logo
+        </div>
+        <div>
+            <SearchBar/>
         </div>
         <div>
             <button>Home</button>
@@ -12,7 +22,7 @@ const Navbar = () =>{
             <button>Create Activity</button>
         </div>
     </nav>
-
+)
 }
 
 

@@ -1,5 +1,6 @@
 .cardContainer{
-    background-color:#15EAA5 ;
+    background: rgb(21,234,165);
+    background: linear-gradient(90deg, rgba(21,234,165,1) 0%, rgba(15,166,110,1) 100%);
     margin: 1rem auto;
     padding: 15px;
     border-radius: 1rem;

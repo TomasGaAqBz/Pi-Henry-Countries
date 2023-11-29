@@ -2,6 +2,14 @@
 .homeContainer{
     width: 100%;
 }
-.primaryText{
+.homeTitle{
     text-align: center;
+    color: #141D19 ;
+    font-size: 1.675rem;
+}
+.homeSubTitle{
+    font-size: 0.825rem;
+    text-align: center;
+    color: #A4A7A4 ;
+    font-style: italic;
 }

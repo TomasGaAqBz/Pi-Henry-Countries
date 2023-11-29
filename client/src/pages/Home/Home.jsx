@@ -12,7 +12,9 @@ const Home = () =>{
 
     return(
         <div className={HomeStyle.homeContainer}>
-            <h1 className={HomeStyle.primaryText}>Esto es el Home</h1>
+            <Navbar></Navbar>
+            <h1 className={HomeStyle.homeTitle}>Welcome</h1>
+            <h5 className={HomeStyle.homeSubTitle} >please, select your country</h5>
             <Cards></Cards>
         </div>
         
