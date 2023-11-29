@@ -14,7 +14,7 @@ activityRouter.post('/', async (req, res) => {
             season,
             countries
         });
-        res.status(200).send('activity created successfully');
+        res.status(200).send('Activity created successfully');
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
