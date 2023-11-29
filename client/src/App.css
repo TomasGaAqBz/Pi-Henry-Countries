@@ -1,8 +1,11 @@
 #root {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-  color: aliceblue;
+}
+.appContainer{
+  color :#141D19;
+  background-color:#F7F6F6 ;
+  width: 100% - 30%;
+  border-radius: 15px;
+  display: flex;
 }
 

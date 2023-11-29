@@ -2,11 +2,11 @@
 //Components 
 import Card from "../Card/Card"
 
-import "./cards.module.css"
+import StyleCards from "./cards.module.css"
 
 const  Cards = () =>{
     return(
-        <div>
+        <div className={StyleCards.cardsContainer} >
             <Card/>
             <Card/>
             <Card/>

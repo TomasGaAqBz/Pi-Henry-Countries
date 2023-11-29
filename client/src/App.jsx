@@ -15,7 +15,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-  <div className='App'>
+  <div className='appContainer'>
     <Routes>
       <Route path='/home' element={<Home/>}  />
       <Route path='/home/:id' element={<Detail/>}  />

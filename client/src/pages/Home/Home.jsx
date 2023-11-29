@@ -6,14 +6,13 @@ import Cards from "../../components/Cards/Cards";
 
 
 //?Styles
-import "./home.module.css"
+import HomeStyle from "./home.module.css"
 
 const Home = () =>{
 
     return(
-        <div>
-            <h1>Esto es el Home</h1>
-            <Navbar></Navbar>
+        <div className={HomeStyle.homeContainer}>
+            <h1 className={HomeStyle.primaryText}>Esto es el Home</h1>
             <Cards></Cards>
         </div>
         

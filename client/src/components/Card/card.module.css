@@ -1,0 +1,12 @@
+.cardContainer{
+    background-color:#15EAA5 ;
+    margin: 1rem auto;
+    padding: 15px;
+    border-radius: 1rem;
+}
+.cardsmallSquare{
+    background-color: #8EF4DB;
+    padding: 30px;
+    border-radius: 1rem;
+    cursor: pointer;
+}
