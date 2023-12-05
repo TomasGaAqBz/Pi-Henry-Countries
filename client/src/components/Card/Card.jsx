@@ -2,11 +2,10 @@ import { Link } from "react-router-dom";
 
 import StyleCard from "./card.module.css"
 
-const Card = ({id,name,continent,flagImage}) =>{
-    
-
+const Card = ({ id, name, continent, flagImage }) => {
     return (
         <div className={StyleCard.cardContainer}>
+            {/* Utiliza el componente Link para redirigir a la página de detalles */}
             <Link to={`/detail/${id}`}>
                 <div className={StyleCard.cardsmallSquare}>
                     <div>
@@ -19,8 +18,7 @@ const Card = ({id,name,continent,flagImage}) =>{
                 </div>
             </Link>
         </div>
-    )
+    );
 }
 
-
-export default Card
+export default Card;

@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import Navbar from "../../components/NavBar/Navbar";
 import Cards from "../../components/Cards/Cards";
 import Paginated from '../../components/Paginated/Paginate'
-import { getCountryInfo } from "../../redux/actions";
+import { filterByActivity, filterByContinent, getCountryInfo, removeFilters } from "../../redux/actions";
 
 
 
@@ -19,6 +19,16 @@ const Home = () =>{
 
     const countrys = useSelector((state) => state.countrys);
 
+    //filtros
+    const clearFilter = () =>{
+        dispatch(removeFilters())
+    }
+    const filterCountryByContinent = (continent) =>{
+        dispatch(filterByContinent(continent))
+    }
+    const filterCountryByActivity = (activity) =>{
+        dispatch(filterByActivity(activity))
+    }
 
     //Paginado
     const [actualPage,setActualPage] = useState(1)
@@ -31,16 +41,6 @@ const Home = () =>{
     const handleChangePage = numPage =>{
         setActualPage(numPage)
     }
-
-
-
-
-    const handleChange = (e) =>{
-        e.preventDefault()
-    }
-
-
-
 
 
 
