@@ -10,20 +10,21 @@ import FormActivity from './pages/FormActivity/FormActivity.jsx';
 import Error from './pages/Error/Error.jsx'
 import './App.css'
 import Home from './pages/Home/Home.jsx';
+import Navbar from './components/NavBar/Navbar.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const {pathname} = useLocation()
 
   return (
   <div className='appContainer'>
+    {pathname !== "/" && <Navbar />}
     <Routes>
+      <Route path="/" element={<Landing />} />
       <Route path='/home' element={<Home/>}  />
-      <Route path='/home/:id' element={<Detail/>}  />
+      <Route path='/detail/:id' element={<Detail/>}  />
       <Route path='/activity' element={<FormActivity/>}  />
+      <Route path="/create" element={<FormActivity />} />
       <Route path='*' element={<Error/>} />
-
-
-
     </Routes>
   </div>
   )

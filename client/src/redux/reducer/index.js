@@ -21,7 +21,7 @@ const reducer = (state = initialState, action) => {
                 countrys: payload
             };
 
-        // Copia de para poder filtrar los paises
+        // Acción para filtrar paises por nombre
         case FILTER_COUNTRY:
             return {
                 ...state,

@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 //? Components
 import Navbar from "../../components/NavBar/Navbar";
 import Cards from "../../components/Cards/Cards";
+import Paginated from '../../components/Paginated/Paginate'
 import { getCountryInfo } from "../../redux/actions";
 
 
@@ -27,6 +28,18 @@ const Home = () =>{
     const indexCardEnd = indexCardStart + cardForPage
     const countrysInPage = countrys.slice(indexCardStart,indexCardEnd)
 
+    const handleChangePage = numPage =>{
+        setActualPage(numPage)
+    }
+
+
+
+
+    const handleChange = (e) =>{
+        e.preventDefault()
+    }
+
+
 
 
 
@@ -38,10 +51,10 @@ const Home = () =>{
 
     return(
         <div className={HomeStyle.homeContainer}>
-            <Navbar></Navbar>
             <h1 className={HomeStyle.homeTitle}>Welcome</h1>
             <h5 className={HomeStyle.homeSubTitle} >please, select your country</h5>
             <Cards countrysInPage={countrysInPage} ></Cards>
+            <Paginated handleChangePage= {handleChangePage} totalOfPages={totalOfPages} actualPage={actualPage} ></Paginated>
         </div>
         
     )
