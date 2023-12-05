@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
             },
             allowNull: false,
         },
-        // Duración de la actividad (tipo de dato TIME)
+        // Duración de la actividad (tipo de dato interger)
         duration: {
             type: DataTypes.INTEGER,
         },
