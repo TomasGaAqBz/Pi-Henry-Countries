@@ -12,7 +12,7 @@ server.listen(PORT, async () => {
 
   try {
     // Sincroniza Sequelize con la base de datos
-    await conn.sync({ force: true });
+    await conn.sync({ force: false });
 
     // Sincroniza los datos de países desde una API externa a la base de datos local
     await countrySync();

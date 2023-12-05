@@ -1,0 +1,18 @@
+.container{
+    width: 100%;
+    display: flex;
+}
+.imgContainer{
+    flex-basis: 55%;
+    text-align: center;
+}
+.infoList{
+    display: flex;
+    gap: 30px;
+}
+.itemList{
+    font-style: italic;
+}
+.itemValue{
+    font-weight: bold;
+}

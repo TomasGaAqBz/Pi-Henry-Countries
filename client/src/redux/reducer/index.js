@@ -33,7 +33,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 countrys: state.allcountrys.filter((country) => {
-                    if (payload === "America") {
+                    if (payload === "Americas") {
                         return (
                             country.continents === "South America" ||
                             country.continents === "North America"

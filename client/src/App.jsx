@@ -11,6 +11,7 @@ import Error from './pages/Error/Error.jsx'
 import './App.css'
 import Home from './pages/Home/Home.jsx';
 import Navbar from './components/NavBar/Navbar.jsx';
+import FilterBar from './components/FilterBar/FilterBar.jsx';
 
 function App() {
   const {pathname} = useLocation()
@@ -18,6 +19,7 @@ function App() {
   return (
   <div className='appContainer'>
     {pathname !== "/" && <Navbar />}
+    {pathname === "/home" && <FilterBar />}
     <Routes>
       <Route path="/" element={<Landing />} />
       <Route path='/home' element={<Home/>}  />

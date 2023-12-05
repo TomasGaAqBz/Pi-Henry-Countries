@@ -1,44 +1,46 @@
-import { filterByContinent, orderByName, removeFilters } from "../../redux/actions";
+import { filterByContinent, orderByName, orderByPopulation, removeFilters } from "../../redux/actions";
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 
 
-const FilterBar = () =>{
-    
+const FilterBar = () => {
+    const dispatch = useDispatch();
     const activity = useSelector((state) => state.activity);
     const countrys = useSelector((state) => state.countrys);
-    const dispatch = useDispatch();
 
+    let activitySet = new Set();
 
-    const handleContinentSelected = (e) => {      
+    const handleContinentSelected = (e) => {
         const optionSelected = e.target.value;
         if (optionSelected === "Continent") {
             dispatch(removeFilters());
         } else {
-            filterByContinent(optionSelected);
+            dispatch(filterByContinent(optionSelected));
         }
     }
+
     const handleOrderName = (e) => {
         if (e.target.value === "selectOrder") {
             dispatch(removeFilters());
         } else {
-            orderByName(e.target.value);
+            dispatch(orderByName(e.target.value));
         }
     };
+
     const handleOrderPopulation = (e) => {
         if (e.target.value === "selectOrder") {
-            dispatch(removeFilter());
+            dispatch(removeFilters());
         } else {
-            orderByPopulation(e.target.value);
+            dispatch(orderByPopulation(e.target.value));
         }
-      };
+    };
 
-
-
-    return(
+    return (
         <div>
             <div>
                 <p>Filter By:</p>
-                <label htmlFor=""> Continenet</label>
-                <select name="" id="">
+                <label htmlFor="continent">Continent</label>
+                <select name="continent" id="continent" onChange={handleContinentSelected}>
                     <option value="Continent">All Continent</option>
                     <option value="Africa">Africa</option>
                     <option value="America">America</option>
@@ -49,14 +51,34 @@ const FilterBar = () =>{
                 </select>
 
                 <label htmlFor="activity">Activity</label>
-                <select name="" id="">
+                <select name="activity" id="activity">
                     <option value="activity">All Activity</option>
-                    {Array.from()}
+                    {Array.from(activitySet).map((activity, index) => (
+                        <option key={index} value={activity}>
+                            {activity.charAt(0).toUpperCase() + activity.slice(1)}
+                        </option>
+                    ))}
+                </select>
+            </div>
+
+            <div>
+                <h4>Order by:</h4>
+                <label htmlFor="orderByName">Name</label>
+                <select name="orderByName" id="orderByName" onChange={handleOrderName}>
+                    <option value="selectOrder">Select order</option>
+                    <option value="A">A-Z</option>
+                    <option value="D">Z-A</option>
+                </select>
+
+                <label htmlFor="orderByPopulation">Population</label>
+                <select name="orderByPopulation" id="orderByPopulation" onChange={handleOrderPopulation}>
+                    <option value="selectOrder">Select order</option>
+                    <option value="A">Ascending</option>
+                    <option value="D">Descending</option>
                 </select>
             </div>
         </div>
-    )
+    );
 }
 
-
-export default FilterBar
+export default FilterBar;
