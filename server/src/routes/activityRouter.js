@@ -7,13 +7,14 @@ const getActivities = require('../controllers/activity/getActivity.js')
 activityRouter.post('/', async (req, res) => {
     const { name, difficulty, duration, season, countries } = req.body;
     try { 
-        const newActivity = await createActivities({
+        const newActivity = await createActivities( {          
             name,
             difficulty,
             duration,
             season,
             countries
         });
+        
         res.status(200).send('Activity created successfully');
     } catch (error) {
         res.status(400).json({ error: error.message });

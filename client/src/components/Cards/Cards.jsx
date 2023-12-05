@@ -4,21 +4,27 @@ import Card from "../Card/Card"
 
 import StyleCards from "./cards.module.css"
 
-const  Cards = () =>{
+const  Cards = ({countrysInPage}) =>{
     return(
         <div className={StyleCards.cardsContainer} >
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
+            {countrysInPage.map(
+                ({
+                    id,
+                    name,
+                    flagImage,
+                    continent
+                })=>(
+                <Card
+                    key={id}
+                    id={id} 
+                    name={name} 
+                    flagImage={flagImage}
+                    continent ={continent}
+                />
+                )
+            )}            
         </div>
-    )
+    );
 }
 
 export default Cards

@@ -24,7 +24,7 @@ module.exports = (sequelize) => {
         },
         // Duración de la actividad (tipo de dato TIME)
         duration: {
-            type: DataTypes.TIME,
+            type: DataTypes.INTEGER,
         },
         // Temporada de la actividad (verano, otoño, invierno, primavera)
         season: {

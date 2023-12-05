@@ -1,19 +1,23 @@
+import { Link } from "react-router-dom";
+
 import StyleCard from "./card.module.css"
 
-
-const Card = () =>{
+const Card = ({id,name,continent,flagImage}) =>{
     
 
     return (
         <div className={StyleCard.cardContainer}>
-            <div className={StyleCard.cardsmallSquare}>
-                <div>imagen</div>
-                <div>
-                    <p>Nombre:</p>
-                    <p>Contienete:</p>
+            <Link to={`/detail/${id}`}>
+                <div className={StyleCard.cardsmallSquare}>
+                    <div>
+                        <img src={flagImage} alt="" />
+                    </div>
+                    <div>
+                        <p>{name.toUpperCase()}</p>
+                        <p>{continent}</p>
+                    </div>
                 </div>
-                <div>Escudo:</div>
-            </div>
+            </Link>
         </div>
     )
 }

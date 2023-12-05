@@ -5,14 +5,6 @@ const { Country,} = require("../../db");
 // 📍 GET | /countries/:id Pais Esta ruta obtiene el detalle de un país específico. Es decir que devuelve un objeto con la información pedida en el detalle de un país. El país es recibido por parámetro (ID de tres letras del país). Tiene que incluir los datos de las actividades turísticas asociadas a este país.
 
 const getCountryById = async (countryId) => {
-    // Expresión regular que valida que el ID del país tenga exactamente 3 letras
-    const countryIdRegex = /^[A-Za-z]{3}$/i;
-
-    // Verifica que el countryId cumple con la expresión regular
-    if (!countryIdRegex.test(countryId)) {
-        throw new Error("The ID must have 3 letters");
-    }
-
     try {
         // Busca en la base de datos un país con el ID proporcionado (insensible a mayúsculas y minúsculas)
         const country = await Country.findOne({
@@ -20,13 +12,13 @@ const getCountryById = async (countryId) => {
                 id: {
                     [Sequelize.Op.iLike]: countryId
                 }
-            },include:{
-                    model: Activity,
-                    attributes: ["name"],
-                    through: {
-                        attributes:[]
-                    }
-                }
+             }//,include:{
+            //         model: Activity,
+            //         attributes: ["name"],
+            //         through: {
+            //             attributes:[]
+            //         }
+            //     }
         });
 
         // Si no se encuentra ningún país con el ID proporcionado, lanza un error

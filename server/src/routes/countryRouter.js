@@ -13,7 +13,7 @@ const getCountryByName = require('../controllers/countries/getCountryByName.js')
 countryRouter.get('/', async (req, res) => {
     const {name} = req.query
     try {
-        const reponse = name ? await getCountryByName(name) : await getAllCountry();
+        const response = name ? await getCountryByName(name) : await getAllCountry();
 
 
         // Responde con un código de estado 200 y la lista de países en formato JSON
