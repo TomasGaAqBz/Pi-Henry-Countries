@@ -29,6 +29,7 @@ const Detail = () => {
                 .get(`http://localhost:3001/country/${id}`)
                 .then(({ data }) => {
                     // Verificar si se obtuvo información válida y actualizar el estado
+                    console.log(data);
                     if (data && data.name) {
                         setDetail({
                             id: data.id,
@@ -39,7 +40,7 @@ const Detail = () => {
                             subregion: data.subregion || "",
                             area: data.area || "",
                             population: data.population || "",
-                            activities: data.Activities || [],
+                            activities: data.activities || [],
                         });
                     }
                 })

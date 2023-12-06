@@ -36,11 +36,6 @@ const Navbar = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/activities">
-                            <i>ACTIVITIES</i>
-                        </NavLink>
-                    </li>
-                    <li>
                         <NavLink to="/create">
                             <i>CREATE ACTIVITY</i>
                         </NavLink>

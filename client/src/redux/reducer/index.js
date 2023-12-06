@@ -35,11 +35,11 @@ const reducer = (state = initialState, action) => {
                 countrys: state.allcountrys.filter((country) => {
                     if (payload === "Americas") {
                         return (
-                            country.continents === "South America" ||
-                            country.continents === "North America"
+                            country.continent === "South America" ||
+                            country.continent === "North America"
                         );
                     } else {
-                        return country.continents === payload;
+                        return country.continent === payload;
                     }
                 })
             };
@@ -81,15 +81,14 @@ const reducer = (state = initialState, action) => {
 
         // Acción para filtrar países por actividad turística
         case FILTER_COUNTRY_BY_ACTIVITY:
+            let filterCountry = [...state.countrys]
+            
+            filterCountry =  filterCountry.filter(country => country.activities.some(activity => activity.name === payload));
+            
             return {
                 ...state,
-                countrys: state.allcountrys.filter((country) => {
-                    // Hacer una verificación en la tabla intermedia para encontrar actividades asociadas al país
-                    return country.CountryActivities?.some((countryActivity) => {
-                        // Comparar el nombre de la actividad
-                        return countryActivity.Activity.name === payload;
-                    });
-                })
+                countrys: filterCountry
+
             };
 
         // Acción por defecto si no se reconoce la acción

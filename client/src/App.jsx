@@ -24,7 +24,6 @@ function App() {
       <Route path="/" element={<Landing />} />
       <Route path='/home' element={<Home/>}  />
       <Route path='/detail/:id' element={<Detail/>}  />
-      <Route path='/activity' element={<FormActivity/>}  />
       <Route path="/create" element={<FormActivity />} />
       <Route path='*' element={<Error/>} />
     </Routes>

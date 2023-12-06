@@ -19,16 +19,6 @@ const Home = () =>{
 
     const countrys = useSelector((state) => state.countrys);
 
-    //filtros
-    const clearFilter = () =>{
-        dispatch(removeFilters())
-    }
-    const filterCountryByContinent = (continent) =>{
-        dispatch(filterByContinent(continent))
-    }
-    const filterCountryByActivity = (activity) =>{
-        dispatch(filterByActivity(activity))
-    }
 
     //Paginado
     const [actualPage,setActualPage] = useState(1)
@@ -52,7 +42,7 @@ const Home = () =>{
     return(
         <div className={HomeStyle.homeContainer}>
             <h1 className={HomeStyle.homeTitle}>Welcome</h1>
-            <h5 className={HomeStyle.homeSubTitle} >please, select your country</h5>
+            <h5 className={HomeStyle.homeSubTitle} >Please, select your country</h5>
             <Cards countrysInPage={countrysInPage} ></Cards>
             <Paginated handleChangePage= {handleChangePage} totalOfPages={totalOfPages} actualPage={actualPage} ></Paginated>
         </div>

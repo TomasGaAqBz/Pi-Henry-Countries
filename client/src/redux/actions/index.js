@@ -46,17 +46,10 @@ export const filterByContinent = (continent) => {
 
 // Acción para filtrar países por actividad turística
 export const filterByActivity = (activityName) => {
-    return async (dispatch, getState) => {
-        try {
-            const { data } = await axios.get(`http://localhost:3001/country?activity=${activityName}`);
-            return dispatch({
-                type: FILTER_COUNTRY_BY_ACTIVITY,
-                payload: data,
-            });
-        } catch (error) {
-            throw new Error("Error al obtener datos de los países en Redux");
-        }
-    };
+    return {
+        type: FILTER_COUNTRY_BY_ACTIVITY,
+        payload: activityName
+    }
 };
 
 // Acción para ordenar países por nombre
