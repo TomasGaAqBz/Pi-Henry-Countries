@@ -5,7 +5,7 @@
     import { useSelector, useDispatch } from "react-redux"; // Importar hooks de Redux
     import { useState } from "react"; // Importar hook de estado local
     import validate from "./validation.js"; // Importar una función de validación
-
+    import StyleFrom from './formActivity.module.css'
     const FormActivity = () => {
         // Opciones para la estación (season)
         const seasonsOptions = ["Spring", "Summer", "Autumn", "Winter"];
@@ -165,10 +165,11 @@
 };
 
     return (
-        <div>
+        <div className={StyleFrom.container}>
             <form action="" onSubmit={handleSubmit} >
                 <div>
-                    <p>Create Activity</p>
+                    <h3 className={StyleFrom.title} >Create Activity</h3>
+                    <p className={StyleFrom.Subtitle}>Pleace complete the Field</p>
                     <div>
                     <label htmlFor="name">Name:</label>
                     <input
@@ -181,7 +182,7 @@
                     />
                     {errors.name && <p>{errors.name}</p>}
                     </div>
-                    <div>
+                    <div  className={StyleFrom.containerField} >
                         <label htmlFor="difficulty">Difficulty:</label>
                         <select
                             id="difficulty"

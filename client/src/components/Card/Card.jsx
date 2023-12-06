@@ -8,12 +8,12 @@ const Card = ({ id, name, continent, flagImage }) => {
             {/* Utiliza el componente Link para redirigir a la página de detalles */}
             <Link to={`/detail/${id}`}>
                 <div className={StyleCard.cardsmallSquare}>
-                    <div>
-                        <img src={flagImage} alt="" />
+                    <div className={StyleCard.imageContainer} >
+                        <img src={flagImage} className={StyleCard.imageContainer} alt="" />
                     </div>
                     <div>
-                        <p>{name.toUpperCase()}</p>
-                        <p>{continent}</p>
+                        <p className={StyleCard.title} >{name.toUpperCase()}</p>
+                        <p className={StyleCard.subtitle} >{continent}</p>
                     </div>
                 </div>
             </Link>
