@@ -7,8 +7,10 @@ import StyleCards from "./cards.module.css"
 const Cards = ({ countrysInPage }) => {
     return (
         <div className={StyleCards.cardsContainer}>
-            {/* Mapea sobre la lista de países para renderizar tarjetas */}
-            {countrysInPage.map(({ id, name, flagImage, continent }) => (
+        {countrysInPage.length === 0 ? (
+            <p>No countries match the selected criteria.</p>
+        ) : (
+            countrysInPage.map(({ id, name, flagImage, continent }) => (
                 <Card
                     key={id}
                     id={id}
@@ -16,8 +18,9 @@ const Cards = ({ countrysInPage }) => {
                     flagImage={flagImage}
                     continent={continent}
                 />
-            ))}
-        </div>
+            ))
+        )}
+    </div>
     );
 }
 

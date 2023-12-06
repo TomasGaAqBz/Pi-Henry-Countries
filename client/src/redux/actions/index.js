@@ -45,20 +45,28 @@ export const filterByContinent = (continent) => {
 };
 
 // Acción para filtrar países por actividad turística
-export const filterByActivity = (activity) => {
-    return {
-        type: FILTER_COUNTRY_BY_ACTIVITY,
-        payload: activity,
+export const filterByActivity = (activityName) => {
+    return async (dispatch, getState) => {
+        try {
+            const { data } = await axios.get(`http://localhost:3001/country?activity=${activityName}`);
+            return dispatch({
+                type: FILTER_COUNTRY_BY_ACTIVITY,
+                payload: data,
+            });
+        } catch (error) {
+            throw new Error("Error al obtener datos de los países en Redux");
+        }
     };
 };
 
 // Acción para ordenar países por nombre
-export const orderByName = (order) => {
-    return {
-        type: ORDER_BY_NAME,
-        payload: order,
+    export const orderByName = (order) => {
+        console.log("Order by name:", order);
+        return {
+            type: ORDER_BY_NAME,
+            payload: order,
+        };
     };
-};
 
 // Acción para ordenar países por población
 export const orderByPopulation = (order) => {

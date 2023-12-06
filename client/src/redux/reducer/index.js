@@ -1,5 +1,5 @@
 // Importación de action types
-import { FILTER_COUNTRY, FILTER_COUNTRY_BY_ACTIVITY, FILTER_COUNTRY_BY_CONTINENT, GET_INFO, GET_INFO_ACTIVITYS, ORDER_COUNTRY_BY_POPULATION, REMOVE_FILTERS } from "../actions";
+import { FILTER_COUNTRY, FILTER_COUNTRY_BY_ACTIVITY, FILTER_COUNTRY_BY_CONTINENT, GET_INFO, GET_INFO_ACTIVITYS, ORDER_COUNTRY_BY_POPULATION,ORDER_BY_NAME,REMOVE_FILTERS } from "../actions";
 
 // Estado inicial de la aplicación
 let initialState = {
@@ -54,6 +54,15 @@ const reducer = (state = initialState, action) => {
                     return 0;
                 })
             };
+            case ORDER_BY_NAME:
+                return {
+                    ...state,
+                    countrys: state.countrys.slice().sort((a, b) => {
+                        if (payload === "A") return a.name.localeCompare(b.name);
+                        if (payload === "D") return b.name.localeCompare(a.name);
+                        return 0;
+                    })
+            };
 
         // Acción para quitar filtros y mostrar todos los países
         case REMOVE_FILTERS:
@@ -75,8 +84,10 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 countrys: state.allcountrys.filter((country) => {
-                    return country.Activities?.find((activity) => {
-                        return activity.name === payload;
+                    // Hacer una verificación en la tabla intermedia para encontrar actividades asociadas al país
+                    return country.CountryActivities?.some((countryActivity) => {
+                        // Comparar el nombre de la actividad
+                        return countryActivity.Activity.name === payload;
                     });
                 })
             };

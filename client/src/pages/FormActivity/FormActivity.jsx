@@ -8,7 +8,7 @@
 
     const FormActivity = () => {
         // Opciones para la estación (season)
-        const seasonsOptions = ["Spring", "Summer", "Autum", "Winter"];
+        const seasonsOptions = ["Spring", "Summer", "Autumn", "Winter"];
     
         // Obtener el estado del país del almacén de Redux
         const countrys = useSelector((state) => state.allcountrys);
