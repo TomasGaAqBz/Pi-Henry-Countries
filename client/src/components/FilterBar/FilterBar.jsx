@@ -10,7 +10,7 @@
     } from "../../redux/actions";
     import React, { useState, useEffect } from 'react';
     import { useDispatch, useSelector } from "react-redux";
-    
+    import StyleFilter from './filterBar.module.css'
     // Define el componente FilterBar
     const FilterBar = () => {
         // Obtiene el despachador (dispatch) de acciones de Redux
@@ -67,11 +67,11 @@
 
         // Renderiza la interfaz de usuario del componente
     return (
-        <div>
-            <div>
-                <p>Filter By:</p>
-                <label htmlFor="continent">Continent</label>
-                <select name="continent" id="continent" onChange={handleContinentSelected}>
+        <div className={StyleFilter.container} >
+            <div className={StyleFilter.containerleft}>
+                <h4 className={StyleFilter.title}>Filter By</h4>
+                <label className={StyleFilter.label} htmlFor="continent">Continent</label>
+                <select className={StyleFilter} name="continent" id="continent" onChange={handleContinentSelected}>
                     <option value="Continent">All Continent</option>
                     <option value="Africa">Africa</option>
                     <option value="Americas">Americas</option>
@@ -81,7 +81,7 @@
                     <option value="Oceania">Oceania</option>
                 </select>
 
-                <label htmlFor="activity">Activity</label>
+                <label className={StyleFilter.label} htmlFor="activity">Activity</label>
             <select name="activity" id="activity" onChange={handleActivitySelected}>
                 <option value="activity">All Activity</option>
                 {activity.map((activity, index) => (
@@ -92,16 +92,16 @@
             </select>
             </div>
 
-            <div>
-                <h4>Order by:</h4>
-                <label htmlFor="orderByName">Name</label>
+            <div className={StyleFilter.containerleft}>
+                <h4 className={StyleFilter.title} >Order by:</h4>
+                <label className={StyleFilter.label} htmlFor="orderByName">Name</label>
                 <select name="orderByName" id="orderByName" onChange={handleOrderName}>
                     <option value="selectOrder">Select order</option>
                     <option value="A">A-Z</option>
                     <option value="D">Z-A</option>
                 </select>
 
-                <label htmlFor="orderByPopulation">Population</label>
+                <label className={StyleFilter.label} htmlFor="orderByPopulation">Population</label>
                 <select name="orderByPopulation" id="orderByPopulation" onChange={handleOrderPopulation}>
                     <option value="selectOrder">Select order</option>
                     <option value="A">Ascending</option>

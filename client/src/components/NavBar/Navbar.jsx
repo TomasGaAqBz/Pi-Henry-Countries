@@ -19,28 +19,21 @@ const Navbar = () => {
 
     return (
         <nav className={NavbarStyle.container}>
-            <div>
-                {/* Aquí iría tu logo */}
-                logo
+            <div className={NavbarStyle.textcontainer} >
+                <NavLink to="/home">
+                            <button className={NavbarStyle.button}>HOME</button>
+                        </NavLink>
+
             </div>
             <div>
                 {/* Barra de búsqueda */}
                 <SearchBar onSearch={onSearch} />
             </div>
-            <div>
-                {/* Menú de navegación */}
-                <ul>
-                    <li>
-                        <NavLink to="/home">
-                            <i>HOME</i>
-                        </NavLink>
-                    </li>
-                    <li>
+            <div className={NavbarStyle.textcontainer} >
                         <NavLink to="/create">
-                            <i>CREATE ACTIVITY</i>
+                            <button className={NavbarStyle.button} >CREATE ACTIVITY</button>
                         </NavLink>
-                    </li>
-                </ul>
+
             </div>
         </nav>
     );

@@ -14,14 +14,15 @@ const SearchBar = ({ onSearch }) => {
 
     return (
         <div className={SearchBarStyle.container}>
-            <form>
+            <form className={SearchBarStyle.formcontainer}>
                 <input
                     type="text"
+                    className={SearchBarStyle.input}
                     onChange={handleChange}
                     placeholder="Search by name..."
                     value={searchString}
                 />
-                <button>*</button>
+                <button className={SearchBarStyle.button}>Search</button>
             </form>
         </div>
     );
