@@ -1,30 +1,41 @@
-//* traemos las activity de db
-const {Activity, Country} = require('../../db')
+const { Activity, Country } = require('../../db');
 
-// POST | /activitiesEsta ruta recibirá todos los datos necesarios para crear una actividad turística y relacionarla con los países solicitados. Toda la información debe ser recibida por body. Debe crear la actividad turística en la base de datos, y esta debe estar relacionada con los países indicados (al menos uno).
-
-const createActivities = async ({ name, difficulty, duration, season, countries} ) => {
+const createActivity = async ({ name, difficulty, duration, season, countries }) => {
     try {
-        // Crea una nueva actividad turística en la base de datos
+        // Validar que los datos proporcionados sean correctos antes de crear la actividad
+        if (!name || !difficulty || !duration || !season || !countries || countries.length === 0) {
+            throw new Error('Invalid data provided');
+        }
+
+        // Crear una nueva actividad turística en la base de datos
         const newActivity = await Activity.create({
             name,
             difficulty,
             duration,
             season
-    });
-        // Asocia la actividad con los países encontrados
+        });
 
-        const country = await Country.findAll({
-            where: { id: countries}
-        })
-        await newActivity.addCountries(country)
+        // Verificar que los países existan antes de asociar la actividad con ellos
+        const existingCountries = await Country.findAll({
+            where: { id: countries }
+        });
 
-        // Devuelve el objeto de la actividad turística recién creada
+        if (!existingCountries || existingCountries.length !== countries.length) {
+            throw new Error('Invalid country/countries provided');
+        }
+
+        // Asociar la actividad con los países encontrados
+        await newActivity.addCountries(existingCountries);
+
+        // Devolver el objeto de la actividad turística recién creada
         return newActivity;
     } catch (error) {
-        // Lanza un error si hay algún problema al crear la actividad o asociarla con los países
+        // Imprimir el error específico para obtener más detalles en la consola del servidor
+        console.error('Error creating tourist activity:', error);
+
+        // Lanzar un error genérico para ocultar detalles internos en la respuesta al cliente
         throw new Error('Error when creating the tourist activity');
     }
 };
 
-module.exports = createActivities;
+module.exports = createActivity;

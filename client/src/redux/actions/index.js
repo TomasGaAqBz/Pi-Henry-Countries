@@ -78,7 +78,7 @@ export const removeFilters = () => {
 // Acción asincrónica para obtener información de todas las actividades turísticas
 export const getActivities = () => async (dispatch) => {
     try {
-        const { data } = await axios.get('http://localhost:3001/activities');
+        const { data } = await axios.get('http://localhost:3001/activity');
         return dispatch({
             type: GET_INFO_ACTIVITYS,
             payload: data,

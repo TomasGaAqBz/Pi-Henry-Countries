@@ -22,14 +22,16 @@ module.exports = (sequelize) => {
             },
             allowNull: false,
         },
-        // Duración de la actividad (tipo de dato interger)
+        // Duración de la actividad (tipo de dato TIME)
         duration: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.TIME,
         },
         // Temporada de la actividad (verano, otoño, invierno, primavera)
         season: {
             type: DataTypes.ENUM('Summer', 'Autumn', 'Winter', 'Spring'),
             allowNull: false,
         },
-    });
-};
+    },{
+        timestamps: false, // No incluir marcas de tiempo en las filas
+      });
+    };
