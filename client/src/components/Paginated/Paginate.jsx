@@ -9,7 +9,7 @@ const Paginated = ({ handleChangePage, totalOfPages, actualPage }) => {
                     key={index + 1}
                     onClick={() => handleChangePage(index + 1)}
                     // Marca la página actual con un estilo diferente
-                    style={{ fontWeight: actualPage === index + 1 ? 'bold' : 'normal' }}
+                    style={{ backgroundColor: actualPage === index + 1 ? '#15EAA5' : '#0FA66E' }}
                 >
                     {index + 1}
                 </button>

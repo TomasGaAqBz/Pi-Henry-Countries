@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import SearchBarStyle from './searchbar.module.css'
+import Home from '../../pages/Home/Home';
 
 const SearchBar = ({ onSearch }) => {
     const [searchString, setSearchString] = useState('');
@@ -11,10 +12,14 @@ const SearchBar = ({ onSearch }) => {
         setSearchString(wantedString);
         onSearch(wantedString);
     };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        onSearch(searchString);
+    };
 
     return (
         <div className={SearchBarStyle.container}>
-            <form className={SearchBarStyle.formcontainer}>
+            <form className={SearchBarStyle.formcontainer} onSubmit={handleSubmit}>
                 <input
                     type="text"
                     className={SearchBarStyle.input}
@@ -22,7 +27,9 @@ const SearchBar = ({ onSearch }) => {
                     placeholder="Search by name..."
                     value={searchString}
                 />
-                <button className={SearchBarStyle.button}>Search</button>
+                <button type="submit" className={SearchBarStyle.button}>
+                    Search
+                </button>
             </form>
         </div>
     );

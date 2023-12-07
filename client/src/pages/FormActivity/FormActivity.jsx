@@ -231,6 +231,7 @@
                     <label>Add this activity to:</label>
                     <select
                         name="countries"
+                        multiple
                         id="country"
                         onChange={handleSelectedCountries}
                     >

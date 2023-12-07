@@ -3,10 +3,9 @@ import { useState, useEffect } from "react";
 
 
 //? Components
-import Navbar from "../../components/NavBar/Navbar";
 import Cards from "../../components/Cards/Cards";
 import Paginated from '../../components/Paginated/Paginate'
-import { filterByActivity, filterByContinent, getCountryInfo, removeFilters } from "../../redux/actions";
+import {getCountryInfo} from "../../redux/actions";
 
 
 
@@ -32,22 +31,19 @@ const Home = () =>{
         setActualPage(numPage)
     }
 
-
-
-    useEffect( () =>{
-        dispatch(getCountryInfo())
-
-    },[dispatch])
+    useEffect(() => {
+        dispatch(getCountryInfo());
+    }, [dispatch]);
 
     return(
         <div className={HomeStyle.homeContainer}>
-            <h1 className={HomeStyle.homeTitle}>Welcome</h1>
-            <h5 className={HomeStyle.homeSubTitle} >Please, select your country</h5>
-            <Cards countrysInPage={countrysInPage} ></Cards>
-            <Paginated handleChangePage= {handleChangePage} totalOfPages={totalOfPages} actualPage={actualPage} ></Paginated>
+            <h1 className={HomeStyle.homeTitle}>Bienvenido</h1>
+            <h5 className={HomeStyle.homeSubTitle}>Por favor, selecciona tu país</h5>
+            <Cards countrysInPage={countrysInPage}></Cards>
+            <Paginated handleChangePage={handleChangePage} totalOfPages={totalOfPages} actualPage={actualPage}></Paginated>
         </div>
-        
-    )
+    );
+    
 }
 
 export default Home; 

@@ -9,6 +9,8 @@ import { useLocation, NavLink, useNavigate } from "react-router-dom";
 const Navbar = () => {
     const dispatch = useDispatch();
     const location = useLocation();
+    const {pathname} = useLocation()
+
     const navigate = useNavigate();
 
     // Maneja la acción de búsqueda.
@@ -20,14 +22,15 @@ const Navbar = () => {
     return (
         <nav className={NavbarStyle.container}>
             <div className={NavbarStyle.textcontainer} >
-                <NavLink to="/home">
+                <NavLink to="/home" exact>
                             <button className={NavbarStyle.button}>HOME</button>
                         </NavLink>
 
             </div>
             <div>
+                {pathname === "/home" && <SearchBar onSearch={onSearch} />} 
                 {/* Barra de búsqueda */}
-                <SearchBar onSearch={onSearch} />
+                
             </div>
             <div className={NavbarStyle.textcontainer} >
                         <NavLink to="/create">
