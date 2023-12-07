@@ -13,14 +13,14 @@ import {getCountryInfo} from "../../redux/actions";
 //?Styles
 import HomeStyle from "./home.module.css"
 
-const Home = () =>{
+const Home = ( { actualPage, setActualPage } ) =>{
     const dispatch = useDispatch();
 
     const countrys = useSelector((state) => state.countrys);
 
 
     //Paginado
-    const [actualPage,setActualPage] = useState(1)
+    
     const cardForPage = 10;
     const totalOfPages = Math.ceil(countrys.length / cardForPage);
     const indexCardStart = (actualPage -1 ) * cardForPage;
@@ -30,6 +30,9 @@ const Home = () =>{
     const handleChangePage = numPage =>{
         setActualPage(numPage)
     }
+    const resetPage = () => {
+        setActualPage(1);
+    };
 
     useEffect(() => {
         dispatch(getCountryInfo());

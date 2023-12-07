@@ -15,4 +15,18 @@
     cursor: pointer;
     transition: transform 0.6s ease-in-out;
     margin: 0 3px;
+    :not(:disabled) {
+        /* Color de fondo cuando no está desactivado */
+        background-color: #0FA66E;
+    
+        /* Estilos adicionales que desees aplicar cuando no está desactivado */
+        /* ... */
+    }
+    
+      /* Estilo cuando el botón está desactivado (página actual) */
+    &:disabled {
+        /* Color de fondo cuando está desactivado (página actual) */
+        background-color: #15EAA5;
+        cursor: default ;
+    }
 }

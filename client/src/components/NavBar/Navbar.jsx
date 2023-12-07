@@ -6,7 +6,7 @@ import { filterCountry, getCountryInfo } from "../../redux/actions";
 import { useLocation, NavLink, useNavigate } from "react-router-dom";
 
 
-const Navbar = () => {
+const Navbar = ( { setActualPage } ) => {
     const dispatch = useDispatch();
     const location = useLocation();
     const {pathname} = useLocation()
@@ -22,13 +22,13 @@ const Navbar = () => {
     return (
         <nav className={NavbarStyle.container}>
             <div className={NavbarStyle.textcontainer} >
-                <NavLink to="/home" exact>
+                <NavLink to="/home" exact= "true" >
                             <button className={NavbarStyle.button}>HOME</button>
                         </NavLink>
 
             </div>
             <div>
-                {pathname === "/home" && <SearchBar onSearch={onSearch} />} 
+                {pathname === "/home" && <SearchBar onSearch={onSearch} setActualPage={setActualPage} />} 
                 {/* Barra de búsqueda */}
                 
             </div>

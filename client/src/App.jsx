@@ -15,14 +15,15 @@ import FilterBar from './components/FilterBar/FilterBar.jsx';
 
 function App() {
   const {pathname} = useLocation()
+  const [actualPage,setActualPage] = useState(1)
 
   return (
   <div className='appContainer'>
-    {pathname !== "/" && <Navbar />}
+    {pathname !== "/" && <Navbar  setActualPage={setActualPage} />}
     {pathname === "/home" && <FilterBar />}
     <Routes>
       <Route path="/" element={<Landing />} />
-      <Route path='/home' element={<Home/>}  />
+      <Route path='/home' element={<Home actualPage={actualPage} setActualPage={setActualPage} />}  />
       <Route path='/detail/:id' element={<Detail/>}  />
       <Route path="/create" element={<FormActivity />} />
       <Route path='*' element={<Error/>} />

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import SearchBarStyle from './searchbar.module.css'
 import Home from '../../pages/Home/Home';
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = ({ onSearch, setActualPage }) => {
     const [searchString, setSearchString] = useState('');
 
     // Maneja el cambio en el input de búsqueda.
@@ -11,10 +11,14 @@ const SearchBar = ({ onSearch }) => {
         const wantedString = e.target.value;
         setSearchString(wantedString);
         onSearch(wantedString);
+        resetPage();
     };
     const handleSubmit = (e) => {
         e.preventDefault();
         onSearch(searchString);
+    };
+    const resetPage = () => {
+        setActualPage(1);
     };
 
     return (
